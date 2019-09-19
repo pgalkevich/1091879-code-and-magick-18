@@ -13,7 +13,7 @@ var BAR_GAP = 50;
 var gistX = CLOUD_X + BAR_GAP;
 var gistY = CLOUD_Y + GIST_OFFSET;
 
-var renderCloud = function(ctx, x, y, color) {
+var renderCloud = function (ctx, x, y, color) {
   var width = CLOUD_WIDTH;
   var height = CLOUD_HEIGHT;
 
@@ -32,7 +32,7 @@ var renderCloud = function(ctx, x, y, color) {
   ctx.fill();
 };
 
-var getMaxElement = function(arr) {
+var getMaxElement = function (arr) {
   var maxElement;
 
   if (arr.length < 1) {
@@ -49,7 +49,7 @@ var getMaxElement = function(arr) {
   return maxElement;
 };
 
-window.renderStatistics = function(ctx, names, times) {
+window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0,0,0,0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#ffffff');
 

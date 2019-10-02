@@ -8,9 +8,23 @@
     return Math.floor((Math.random() * (max - min)) + min);
   };
 
+  var isEnterEvent = function (evt, action) {
+    if (evt.keyCode === ENTER_KEYCODE) {
+      action();
+    }
+  };
+
+  var isEscEvent = function (evt, action) {
+    if (evt.keyCode === ENTER_KEYCODE) {
+      action();
+    }
+  };
+
   window.utils = {
     ESC_KEYCODE: ESC_KEYCODE,
     ENTER_KEYCODE: ENTER_KEYCODE,
-    getRandomIndex: getRandomIndex
+    getRandomIndex: getRandomIndex,
+    isEnterEvent: isEnterEvent,
+    isEscEvent: isEscEvent
   };
 })();

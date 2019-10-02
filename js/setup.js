@@ -13,9 +13,7 @@
   var wizardFireball = setupWindow.querySelector('.setup-fireball');
 
   var onPopupEscPress = function (evt) {
-    if (evt.keyCode === window.utils.ESC_KEYCODE) {
-      closePopup();
-    }
+    window.util.isEscEvent(evt, closePopup);
   };
 
   var colorsSelector = function (el) {
@@ -58,10 +56,8 @@
   });
 
   setupOpenBtn.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === window.ENTER_KEYCODE) {
-      evt.stopPropagation();
-      openPopup();
-    }
+    evt.stopPropagation();
+    window.util.isEnterEvent(evt, openPopup);
   });
 
   setupCloseBtn.addEventListener('click', function () {
@@ -69,9 +65,7 @@
   });
 
   setupCloseBtn.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === window.ENTER_KEYCODE) {
-      closePopup();
-    }
+    window.util.isEnterEvent(evt, closePopup);
   });
 
   var userNameInput = setupWindow.querySelector('.setup-user-name');

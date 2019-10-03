@@ -13,7 +13,7 @@
   var wizardFireball = setupWindow.querySelector('.setup-fireball');
 
   var onPopupEscPress = function (evt) {
-    window.util.isEscEvent(evt, closePopup);
+    window.utils.isEscEvent(evt, closePopup);
   };
 
   var colorsSelector = function (el) {
@@ -39,7 +39,7 @@
 
   var openPopup = function () {
     setupWindow.classList.remove('hidden');
-    document.addEventListener('keydown', onPopupEscPress);
+    window.addEventListener('keydown', onPopupEscPress);
     setupWindow.addEventListener('click', function (evt) {
       colorsSelector(evt.target);
     });
@@ -48,6 +48,8 @@
   var closePopup = function () {
     setupWindow.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
+    setupWindow.style.left = window.setupWindowBaseCoords.x;
+    setupWindow.style.top = window.setupWindowBaseCoords.y;
   };
 
   setupOpenBtn.addEventListener('click', function (evt) {
@@ -56,8 +58,7 @@
   });
 
   setupOpenBtn.addEventListener('keydown', function (evt) {
-    evt.stopPropagation();
-    window.util.isEnterEvent(evt, openPopup);
+    window.utils.isEnterEvent(evt, openPopup);
   });
 
   setupCloseBtn.addEventListener('click', function () {
@@ -65,7 +66,7 @@
   });
 
   setupCloseBtn.addEventListener('keydown', function (evt) {
-    window.util.isEnterEvent(evt, closePopup);
+    window.utils.isEnterEvent(evt, closePopup);
   });
 
   var userNameInput = setupWindow.querySelector('.setup-user-name');

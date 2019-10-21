@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+  // отправка данных на сервер
   var save = function (data, onSuccess) {
     var URL = 'https://js.dump.academy/code-and-magick';
     var xhr = new XMLHttpRequest();
@@ -13,8 +14,8 @@
     xhr.send(data);
   };
 
-  var load = function (onSuccess, onError) {
-    var URL = 'https://js.dump.academy/code-and-magick/data';
+  // загрузчик данных с сервера
+  var load = function (URL, onSuccess, onError) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
 

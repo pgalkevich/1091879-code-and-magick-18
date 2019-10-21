@@ -12,6 +12,7 @@
     y: setupWindowBaseCoords.y
   };
 
+  // функционал перетаскивания окна с пользовательских настроек
   dialogHandle.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
 

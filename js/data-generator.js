@@ -3,6 +3,7 @@
 (function () {
   var setupWindow = document.querySelector('.setup');
 
+  // создание блока с магом
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
   var renderWizard = function (wizard) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -14,19 +15,13 @@
     return wizardElement;
   };
 
-  var similarListElement = document.querySelector('.setup-similar-list');
-
-  document.querySelector('.setup-similar').classList.remove('hidden');
-
+  // обработчик успешной загрузки данных с сервера
   var successHandler = function (wizards) {
-    var fragment = document.createDocumentFragment();
-
-    for (var i = 0; i < 4; i++) {
-      fragment.appendChild(renderWizard(wizards[i]));
-    }
-    similarListElement.appendChild(fragment);
+    window.dataGenerator.allWizards = wizards;
+    window.wizardList.updateSimilarWizardsList();
   };
 
+  // обработчик ошибки при загрузке данных с сервера
   var errorHandler = function (errorMessage) {
     var node = document.createElement('div');
 
@@ -39,8 +34,15 @@
     node.textContent = errorMessage;
     document.body.insertAdjacentElement('afterbegin', node);
   };
-  window.backend.load(successHandler, errorHandler);
 
+  // показ блока с похожими магами
+  document.querySelector('.setup-similar').classList.remove('hidden');
+
+  // вызов функции обращения к серверу за данными для магов
+  var URL = 'https://js.dump.academy/code-and-magick/data';
+  window.backend.load(URL, successHandler, errorHandler);
+
+  // обработчик сабмита формы
   var form = setupWindow.querySelector('.setup-wizard-form');
   form.addEventListener('submit', function (evt) {
     window.backend.save(new FormData(form), function () {

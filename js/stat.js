@@ -13,6 +13,7 @@
   var gistX = CLOUD_X + BAR_GAP;
   var gistY = CLOUD_Y + GIST_OFFSET;
 
+  // функция для создания окна для статистики
   var renderCloud = function (ctx, x, y, color) {
     var width = CLOUD_WIDTH;
     var height = CLOUD_HEIGHT;
@@ -32,6 +33,7 @@
     ctx.fill();
   };
 
+  // функция поиска максимального элемента в массиве
   var getMaxElement = function (arr) {
     var maxElement;
 
@@ -49,6 +51,7 @@
     return maxElement;
   };
 
+  // рендеринг окна со статистикой
   window.renderStatistics = function (ctx, names, times) {
     renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0,0,0,0.7)');
     renderCloud(ctx, CLOUD_X, CLOUD_Y, '#ffffff');
